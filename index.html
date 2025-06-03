@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typing Animation Names</title>
+    <title>Typing and Shadow Pop Animation</title>
     <style>
         body {
             margin: 0;
@@ -23,71 +23,77 @@
         .name {
             color: #0f0;
             font-size: 3rem;
-            display: inline-block;
+            display: block; /* Line-by-line display */
             white-space: nowrap;
             overflow: hidden;
-            opacity: 0;
+            opacity: 0; /* Start invisible for typing effect */
+            margin: 15px 0; /* Increased spacing for better readability */
         }
 
-        /* Animation for typing effect */
+        /* Typing animation keyframes */
         @keyframes typing {
             from {
                 width: 0;
+                opacity: 0;
             }
             to {
                 width: 100%;
-            }
-        }
-
-        /* Animation for fading out */
-        @keyframes fadeOut {
-            from {
                 opacity: 1;
             }
-            to {
-                opacity: 0;
+        }
+
+        /* Shadow pop animation keyframes */
+        @keyframes shadow-pop-bl {
+            0% {
+                box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                box-shadow: -1px 1px #3e3e3e, -2px 2px #3e3e3e, -3px 3px #3e3e3e, -4px 4px #3e3e3e, -5px 5px #3e3e3e, -6px 6px #3e3e3e, -7px 7px #3e3e3e, -8px 8px #3e3e3e;
+                transform: translateX(8px) translateY(-8px);
+                opacity: 1;
             }
         }
 
-        /* Apply animations to each name */
+        /* Animation timings for each name */
         .name:nth-child(1) {
             animation: 
                 typing 2s steps(20, end) forwards,
-                fadeOut 0.5s 3s forwards;
+                shadow-pop-bl 0.3s cubic-bezier(.47,0.000,.745,.715) 2.5s forwards;
         }
 
         .name:nth-child(2) {
             animation: 
-                typing 2s steps(20, end) 4s forwards,
-                fadeOut 0.5s 7s forwards;
+                typing 2s steps(20, end) 3s forwards,
+                shadow-pop-bl 0.3s cubic-bezier(.47,0.000,.745,.715) 5.5s forwards;
         }
 
         .name:nth-child(3) {
             animation: 
-                typing 2s steps(20, end) 8s forwards,
-                fadeOut 0.5s 11s forwards;
+                typing 2s steps(20, end) 6s forwards,
+                shadow-pop-bl 0.3s cubic-bezier(.47,0.000,.745,.715) 8.5s forwards;
         }
 
         .name:nth-child(4) {
             animation: 
-                typing 2s steps(20, end) 12s forwards,
-                fadeOut 0.5s 15s forwards;
+                typing 2s steps(20, end) 9s forwards,
+                shadow-pop-bl 0.3s cubic-bezier(.47,0.000,.745,.715) 11.5s forwards;
         }
 
         .name:nth-child(5) {
             animation: 
-                typing 2s steps(20, end) 16s forwards,
-                fadeOut 0.5s 19s forwards;
+                typing 2s steps(20, end) 12s forwards,
+                shadow-pop-bl 0.3s cubic-bezier(.47,0.000,.745,.715) 14.5s forwards;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="name">Faizaan</div>
-        <div class="name">Umair</div>
         <div class="name">Muzaffar</div>
+        <div class="name">Umair</div>
         <div class="name">Rubissco</div>
-        <div class="name">& more</div>
+        <div class="name">& More</div>
     </div>
 </body>
 </html>
